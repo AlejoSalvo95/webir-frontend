@@ -1,0 +1,39 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #282c34;
+
+}
+
+.app {
+  text-align: center;
+  padding: 10% 0 0 0;
+  color: white;
+}
+
+.app-logo {
+  height: 40vmin;
+}
+
+.app-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+
+.margin_10_0_0_0{
+  margin: 10px 0 0 0;
+}

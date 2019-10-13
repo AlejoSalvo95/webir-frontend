@@ -1,0 +1,23 @@
+.selection {
+  text-align: center;
+}
+
+.select-text{
+  font-size: 40px;
+}
+
+.select-button{
+  width: 200px;
+  border: 0;
+  border-radius: 23px;
+  height: 200px;
+  margin: 10px;
+  font-size: 20px;
+}
+.select-button img{
+  width: 100px;
+}
+.select-button p{
+  margin: 10px 0 0 0;
+}
+
