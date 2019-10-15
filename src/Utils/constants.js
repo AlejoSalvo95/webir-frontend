@@ -18,7 +18,7 @@ export const phone = {
 export const phoneBrands = [{text:'Samsung', imgSrc: ""},{text:'Iphone', imgSrc:"imgSrc"} ]
 export const computerBrands = [{text:'Windows', imgSrc: windowsSvg},{text:'Mac', imgSrc:appleSvg} ]
 
-export const priceRange = [
+export const pricesRange = [
     { bottom: 200, top: 400},
     { bottom: 400, top: 600},
     { bottom: 600, top: 800},

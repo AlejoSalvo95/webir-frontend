@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {computer, computerBrands, phone, phoneBrands, prices} from '../Utils/constants'
+import React from 'react';
+import {computer, computerBrands, phone, phoneBrands} from '../Utils/constants'
 import SelectPriceRange from './SelectPriceRange'
 
 type setHookFunction = (value: string) => void
@@ -16,7 +16,7 @@ export default (selectedPriceRange: string, setSelectedPriceRange: setHookFuncti
       <p className="select-text">SELECT BRAND</p>
       { brands.map((brand,ixd) => 
         <button key={ixd} className="select-button" onClick={() => handleClick(brand.text)}>
-          <img src={brand.imgSrc}/>
+          <img alt={brand.text} src={brand.imgSrc}/>
           <p>{brand.text}</p>
         </button>
       )}

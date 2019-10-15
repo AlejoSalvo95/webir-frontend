@@ -37,3 +37,7 @@ textarea:focus, input:focus{
 .margin_10_0_0_0{
   margin: 10px 0 0 0;
 }
+
+.margin_0_10{
+  margin: 0 10px;
+}

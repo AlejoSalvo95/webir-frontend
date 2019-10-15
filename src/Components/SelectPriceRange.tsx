@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {computer, phone, prices} from '../Utils/constants'
+import React from 'react';
+import {prices, pricesRange} from '../Utils/constants'
 
 type setHookFunction = (value: string) => void
 
@@ -12,14 +12,7 @@ export default (selectedPriceRange: string, setSelectedPriceRange: setHookFuncti
   return (
     <div>
       <p className="select-text">SELECT PRICE RANGE</p>
-      <span>Between</span>
-      <select>
-        {prices.map(price => <option value={price}>{price}</option>)}
-      </select>
-      <span>and</span>
-      <select>
-        {prices.map(price => <option value={price}>{price}</option>)}
-      </select>
+      {pricesRange.map((priceRange,idx) => <button key={idx} className="select-price-button margin_0_10">{priceRange.bottom + ' - ' + priceRange.top}</button>)}
     </div>
   );
 }
