@@ -29,3 +29,7 @@
   border: none;
   border-radius: 5px;
 }
+
+.big_padding_top{
+  padding: 10% 0 0 0;
+}
