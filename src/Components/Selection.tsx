@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import SelectDevice from './SelectDevice'
-import SelectModel from './SelectModel'
-import {selectDevice, selectModel} from '../Utils/constants'
+import SelectBrand from './SelectBrand'
+
+import {selectDevice, selectBrand} from '../Utils/constants'
 import './SelectionStyles.css';
 
 export default () => {
     // Declara una nueva variable de estado, la cual llamaremos “count”
     const [shownComponent, setShownComponent] = useState('SelectDevice');
     const [selectedDevice, setSelectedDevice] = useState('');
-    const [selectedModel, setSelectedModel] = useState('');
+    const [selectedBrand, setSelectedBrand] = useState('');
+    const [selectedPriceRange, setSelectedPriceRange] = useState('');
   
-    let changeSelectedModel = (model: string) => {
-      setSelectedModel(model)
+    let changeSelectedBrand = (brand: string) => {
+      setSelectedBrand(brand)
     }
     let changeSelectedDevice = (device: string) => {
       setSelectedDevice(device)
@@ -22,7 +24,7 @@ export default () => {
     return (
       <div>
         {shownComponent === selectDevice ?  SelectDevice(changeSelectedDevice, changeShownComponent) : 
-        shownComponent === selectModel ? SelectModel(selectedDevice, changeSelectedModel, changeShownComponent) : 'Nada'}
+        shownComponent === selectBrand ? SelectBrand(selectedPriceRange,setSelectedPriceRange,selectedDevice, changeSelectedBrand, changeShownComponent) : ''}
       </div>
     );
 }

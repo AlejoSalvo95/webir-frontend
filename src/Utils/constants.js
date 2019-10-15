@@ -1,8 +1,10 @@
 import laptopSvg from './Assets/Images/laptop.svg';
 import phoneSvg from './Assets/Images/phone.svg';
+import appleSvg from './Assets/Images/apple.svg';
+import windowsSvg from './Assets/Images/windows.svg';
 
 export const selectDevice = 'SelectDevice'
-export const selectModel = 'SelectModel'
+export const selectBrand = 'SelectBrand'
 export const computer = {
     text: 'Computer',
     imgSrc: laptopSvg,
@@ -13,12 +15,14 @@ export const phone = {
     imgSrc: phoneSvg,
 }
 
-export const phoneModels = [{text:'Samsung', imgSrc: ""},{text:'Iphone', imgSrc:"imgSrc"} ]
-export const computerModels = [{text:'Windows', imgSrc:"Assets/Images/laptop.svg"},{text:'Mac', imgSrc:"imgSrc"} ]
+export const phoneBrands = [{text:'Samsung', imgSrc: ""},{text:'Iphone', imgSrc:"imgSrc"} ]
+export const computerBrands = [{text:'Windows', imgSrc: windowsSvg},{text:'Mac', imgSrc:appleSvg} ]
 
 export const priceRange = [
-    { bottom: 100, top: 200},
-    { bottom: 200, top: 300},
-    { bottom: 300, top: 400},
-    { bottom: 400, top: 500},
+    { bottom: 200, top: 400},
+    { bottom: 400, top: 600},
+    { bottom: 600, top: 800},
+    { bottom: 800, top: 1000},
 ]
+
+export const prices = [200, 400, 600, 800, 1000]
