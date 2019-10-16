@@ -1,5 +1,5 @@
 import React from 'react';
-import {computer, phone} from '../Utils/constants'
+import {computer, phone} from 'Utils/constants'
 
 type setHookFunction = (value: string) => void
 

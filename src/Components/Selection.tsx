@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import SelectDevice from './SelectDevice'
 import SelectBrand from './SelectBrand'
 
-import {selectDevice, selectBrand} from '../Utils/constants'
+import {selectDevice, selectBrand} from 'Utils/constants'
+import { selectBrandPropsType } from 'Utils/Types'
+
 import './SelectionStyles.css';
 
 export default () => {
@@ -21,10 +23,17 @@ export default () => {
     let changeShownComponent = (component: string) => {
       setShownComponent(component)
     }
+    let selectBrandProps: selectBrandPropsType = {
+      selectedPriceRange,
+      setSelectedPriceRange,
+      selectedDevice,
+      changeSelectedBrand,
+      changeShownComponent,
+    }
     return (
       <div>
         {shownComponent === selectDevice ?  SelectDevice(changeSelectedDevice, changeShownComponent) : 
-        shownComponent === selectBrand ? SelectBrand(selectedPriceRange,setSelectedPriceRange,selectedDevice, changeSelectedBrand, changeShownComponent) : ''}
+        shownComponent === selectBrand ? <SelectBrand {...selectBrandProps}  /> : ''}
       </div>
     );
 }

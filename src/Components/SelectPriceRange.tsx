@@ -1,5 +1,5 @@
 import React from 'react';
-import {prices, pricesRange} from '../Utils/constants'
+import {prices, pricesRange} from 'Utils/constants'
 
 type setHookFunction = (value: string) => void
 

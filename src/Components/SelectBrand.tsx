@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
-import {computer, computerBrands, phone, phoneBrands} from '../Utils/constants'
+import {computer, computerBrands, phone, phoneBrands} from 'Utils/constants'
 import SelectPriceRange from './SelectPriceRange'
-import Loader from '../Loader';
+import Loader from 'Loader';
+import { setHookFunction, selectBrandPropsType } from 'Utils/Types'
 
-type setHookFunction = (value: string) => void
 
-export default (selectedPriceRange: string, setSelectedPriceRange: setHookFunction, selectedDevice: string, setSelectedDevice: setHookFunction, setShownComponent: setHookFunction) => {
-  // const [loading, setLoading] = useState(false);
+export default ({selectedPriceRange, setSelectedPriceRange, selectedDevice, changeSelectedBrand, changeShownComponent}: selectBrandPropsType) => { 
+//  const { selectedPriceRange, setSelectedPriceRange, selectedDevice, changeSelectedBrand, changeShownComponent } = selectBrandProps
+  let brands = selectedDevice === computer.text ? computerBrands : selectedDevice === phone.text ? phoneBrands : []
+  const [loading, setLoading] = useState(false);
 
   let handleClick = (device: string) => {
-    // console.log(loading,'loading')
-    // setLoading(true)
-    setSelectedDevice(device)
+    console.log(loading,'loading')
+    setLoading(true)
+    changeSelectedBrand(device)
   }
-  let brands = selectedDevice === computer.text ? computerBrands : selectedDevice === phone.text ? phoneBrands : []
+  
   return (
     <div>
-      {/* loading && Loader() */}
+      {loading && Loader()}
       <div className="big_padding_top">
         <p className="select-text">SELECT BRAND</p>
         { brands.map((brand,ixd) => 
