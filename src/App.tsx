@@ -1,6 +1,6 @@
-import React from 'react';
-import './AppStyles.css';
-import Selection from './Components/Selection'
+import React from "react";
+import "./AppStyles.css";
+import Selection from "./Components/Selection";
 
 /*
   PREVIOUS APP:
@@ -25,9 +25,9 @@ import Selection from './Components/Selection'
 const App: React.FC = () => {
   return (
     <div className="app">
-      <Selection/>
+      <Selection />
     </div>
   );
-}
+};
 
 export default App;

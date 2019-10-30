@@ -2,11 +2,11 @@
   text-align: center;
 }
 
-.select-text{
+.select-text {
   font-size: 40px;
 }
 
-.select-button{
+.select-button {
   width: 200px;
   border: 0;
   border-radius: 23px;
@@ -14,15 +14,15 @@
   margin: 10px;
   font-size: 20px;
 }
-.select-button img{
+.select-button img {
   width: 100px;
   max-width: 100px;
   max-height: 100px;
 }
-.select-button p{
+.select-button p {
   margin: 10px 0 0 0;
 }
-.select-price-button{
+.select-price-button {
   width: 100px;
   height: 40px;
   font-size: 15px;
@@ -30,6 +30,6 @@
   border-radius: 5px;
 }
 
-.big_padding_top{
+.big_padding_top {
   padding: 10% 0 0 0;
 }
