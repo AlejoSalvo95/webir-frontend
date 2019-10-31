@@ -14,11 +14,18 @@ export default (
   return (
     <div>
       <p className="select-text">SELECT PRICE RANGE</p>
-      {pricesRange.map((priceRange, idx) => (
-        <button key={idx} className="select-price-button margin_0_10">
-          {priceRange.bottom + " - " + priceRange.top}
-        </button>
-      ))}
+      {pricesRange.map((priceRange, idx) => {
+        let priceRangeText = priceRange.bottom + " - " + priceRange.top;
+        return (
+          <button
+            onClick={() => handleClick(priceRangeText)}
+            key={idx}
+            className="select-price-button margin_0_10"
+          >
+            {priceRangeText}
+          </button>
+        );
+      })}
     </div>
   );
 };

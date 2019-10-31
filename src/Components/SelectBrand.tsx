@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { phone, phoneBrands } from "Utils/constants";
-import SelectPriceRange from "./SelectPriceRange";
+import SelectPriceRange from "Components/SelectPriceRange";
+import SelectMemorySize from "Components/SelectMemorySize";
+
 import Loader from "Loader";
 import { setHookFunction, selectBrandPropsType } from "Utils/Types";
 
 export default ({
   selectedPriceRange,
   setSelectedPriceRange,
+  selectedMemorySize,
+  setSelectedMemorySize,
   changeSelectedBrand,
   changeShownComponent
 }: selectBrandPropsType) => {
@@ -31,10 +35,10 @@ export default ({
             onClick={() => handleClick(brand.text)}
           >
             <img alt={brand.text} src={brand.imgSrc} />
-            <p>{brand.text}</p>
           </button>
         ))}
         {SelectPriceRange(selectedPriceRange, setSelectedPriceRange)}
+        {SelectMemorySize(selectedMemorySize, setSelectedMemorySize)}
       </div>
     </div>
   );

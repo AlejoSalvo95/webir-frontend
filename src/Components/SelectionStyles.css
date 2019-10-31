@@ -7,16 +7,14 @@
 }
 
 .select-button {
-  width: 200px;
   border: 0;
   border-radius: 23px;
   height: 200px;
   margin: 10px;
-  font-size: 20px;
+  padding: 25px;
 }
 .select-button img {
-  width: 100px;
-  max-width: 100px;
+  width: 180px;
   max-height: 100px;
 }
 .select-button p {
@@ -28,6 +26,7 @@
   font-size: 15px;
   border: none;
   border-radius: 5px;
+  margin: 5px;
 }
 
 .big_padding_top {
