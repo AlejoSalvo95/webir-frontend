@@ -17,7 +17,7 @@ export default () => {
     <div>
       {loading && Loader()}
       <div className="big_padding_top">
-        <p className="select-text">SELECT BRAND</p>
+        <p className="select-text">PHONES</p>
         {phones.map((phone, ixd) => (
           <button
             key={ixd}

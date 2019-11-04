@@ -13,7 +13,7 @@ import { Service, Phone } from "Utils/Types";
     }
 */
 export interface Phones {
-  results: Phone[];
+  data: Phone[];
 }
 
 const useGetPhonesService = () => {

@@ -41,9 +41,9 @@ export default () => {
       {<SelectBrand {...selectBrandProps} />}
       {<p onClick={handleFetchPhones}>Cickea aca para mandarlo</p>}
       {service.status === "loading" && Loader()}
-      {service.status === "loaded" &&
-        service.payload.results.map(starship => (
-          <div key={starship.name}>{starship.price}</div>
+      {service.status === "loaded" && service.payload.data && 
+        service.payload.data.map((starship,idx) => (
+          <div key={idx}>{starship.price}</div>
         ))}
       {service.status === "error" && (
         <div>Error, the backend moved to the dark side.</div>
