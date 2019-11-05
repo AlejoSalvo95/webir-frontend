@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SelectBrand from "./SelectBrand";
 import PhoneService from "Services/PhoneService";
-import { selectBrandPropsType, PhoneQuery, ServiceSuccess, ServiceError } from "Utils/Types";
+import { selectBrandPropsType, PhoneQuery, ServiceSuccess, ServiceError, PriceRange } from "Utils/Types";
 import getPhonesService from "Services/PhoneService";
 
 import "./SelectionStyles.css";
@@ -16,15 +16,21 @@ export default () => {
   // Declara una nueva variable de estado, la cual llamaremos “count”
   const [showLoader, setShowLoader] = useState(false);
   const [shownComponent, setShownComponent] = useState("SelectDevice");
-  const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectedPriceRange, setSelectedPriceRange] = useState("");
-  const [selectedMemorySize, setSelectedMemorySize] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState();
+  const [selectedPriceRange, setSelectedPriceRange] = useState();
+  const [selectedMemorySize, setSelectedMemorySize] = useState();
   let phoneResponse: ServiceSuccess | ServiceError | undefined
 
   // TODO
   // QUE AL APRETAR UN BOTON QUEDE AZUL O ALGO ASI
   // QUE HAYA UN BOTON BUSCAR QUE TE TRAIGA ESA BUSQUEDA
 
+  let changeSelectedMemorySize = (memory: number) => {
+    setSelectedMemorySize(memory);
+  };
+  let changeSelectedPriceRange = (princeRange: PriceRange) => {
+    setSelectedPriceRange(princeRange);
+  };
   let changeSelectedBrand = (brand: string) => {
     setSelectedBrand(brand);
   };
@@ -32,24 +38,38 @@ export default () => {
     setShownComponent(component);
   };
   let handleFetchPhones = async () => {
-    setShowLoader(true)
-    phoneResponse = await getPhonesService(defaultSearch);
-    setShowLoader(false)
+    console.log(selectedBrand, selectedPriceRange, selectedMemorySize)
+    if (selectedBrand && selectedPriceRange && selectedMemorySize) {
+      setShowLoader(true)
+      let query: PhoneQuery = {
+        brand: selectedBrand,
+        lowest_price: selectedPriceRange.lowest,
+        highest_price: selectedPriceRange.highest,
+        memory: selectedMemorySize
+      }
+      phoneResponse = await getPhonesService(query);
+      setShowLoader(false)
+      console.log("clicked this handle phones");
+    } else {
+      console.log("missing params");
 
-    console.log("clicked this handle phones");
+    }
   };
   let selectBrandProps: selectBrandPropsType = {
     selectedPriceRange,
-    setSelectedPriceRange,
+    changeSelectedPriceRange,
     selectedMemorySize,
-    setSelectedMemorySize,
+    changeSelectedMemorySize,
+    selectedBrand,
     changeSelectedBrand,
     changeShownComponent
   };
   return (
     <div>
       {<SelectBrand {...selectBrandProps} />}
-      {<p onClick={handleFetchPhones}>Cickea aca para mandarlo</p>}
+      <div className="margin_10_0_0_0">
+        <button onClick={handleFetchPhones} className="get-prices">Get best prices!</button>
+      </div>
       {showLoader && Loader()}
       {phoneResponse && phoneResponse.status === "success" && phoneResponse.payload.data &&
         phoneResponse.payload.data.map((starship, idx) => (

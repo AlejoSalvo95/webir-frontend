@@ -20,6 +20,9 @@
 .select-button p {
   margin: 10px 0 0 0;
 }
+.select-button.selected {
+  background-color: #aeffb4;
+}
 .select-price-button {
   width: 100px;
   height: 40px;
@@ -28,7 +31,16 @@
   border-radius: 5px;
   margin: 5px;
 }
-
+.select-price-button.selected {
+  background-color: #aeffb4;
+}
 .big_padding_top {
   padding: 10% 0 0 0;
+}
+.get-prices{
+  padding: 10px 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
 }

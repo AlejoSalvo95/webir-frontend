@@ -1,13 +1,12 @@
 import React from "react";
-import { prices, pricesRange } from "Utils/constants";
-
-type setHookFunction = (value: string) => void;
+import { pricesRange } from "Utils/constants";
+import { PriceRange, setHookFunctionPriceRange } from "Utils/Types";
 
 export default (
-  selectedPriceRange: string,
-  setSelectedPriceRange: setHookFunction
+  selectedPriceRange: PriceRange,
+  setSelectedPriceRange: setHookFunctionPriceRange
 ) => {
-  let handleClick = (range: string) => {
+  let handleClick = (range: PriceRange) => {
     setSelectedPriceRange(range);
   };
 
@@ -15,14 +14,13 @@ export default (
     <div>
       <p className="select-text">SELECT PRICE RANGE</p>
       {pricesRange.map((priceRange, idx) => {
-        let priceRangeText = priceRange.bottom + " - " + priceRange.top;
         return (
           <button
-            onClick={() => handleClick(priceRangeText)}
+            onClick={() => handleClick(priceRange)}
             key={idx}
-            className="select-price-button margin_0_10"
+            className={"select-price-button margin_0_10" + (selectedPriceRange && priceRange && selectedPriceRange.text === priceRange.text ? " selected" : "")}
           >
-            {priceRangeText}
+            {priceRange.text}
           </button>
         );
       })}

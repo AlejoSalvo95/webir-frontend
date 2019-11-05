@@ -4,23 +4,24 @@ import SelectPriceRange from "Components/SelectPriceRange";
 import SelectMemorySize from "Components/SelectMemorySize";
 
 import Loader from "Loader";
-import { setHookFunction, selectBrandPropsType } from "Utils/Types";
+import { selectBrandPropsType } from "Utils/Types";
 
 export default ({
   selectedPriceRange,
-  setSelectedPriceRange,
+  changeSelectedPriceRange,
   selectedMemorySize,
-  setSelectedMemorySize,
+  changeSelectedMemorySize,
+  selectedBrand,
   changeSelectedBrand,
   changeShownComponent
 }: selectBrandPropsType) => {
   let brands = phoneBrands;
   const [loading, setLoading] = useState(false);
 
-  let handleClick = (device: string) => {
+  let handleClick = (brand: string) => {
     console.log(loading, "loading");
     // setLoading(true);
-    changeSelectedBrand(device);
+    changeSelectedBrand(brand);
   };
 
   return (
@@ -31,14 +32,14 @@ export default ({
         {brands.map((brand, ixd) => (
           <button
             key={ixd}
-            className="select-button"
+            className={"select-button" + (selectedBrand === brand.text ? " selected" : "")}
             onClick={() => handleClick(brand.text)}
           >
             <img alt={brand.text} src={brand.imgSrc} />
           </button>
         ))}
-        {SelectPriceRange(selectedPriceRange, setSelectedPriceRange)}
-        {SelectMemorySize(selectedMemorySize, setSelectedMemorySize)}
+        {SelectPriceRange(selectedPriceRange, changeSelectedPriceRange)}
+        {SelectMemorySize(selectedMemorySize, changeSelectedMemorySize)}
       </div>
     </div>
   );

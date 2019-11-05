@@ -1,18 +1,22 @@
-export type setHookFunction = (value: string) => void;
+export type setHookFunctionString = (value: string) => void;
+export type setHookFunctionNumber = (value: number) => void;
+export type setHookFunctionPriceRange = (value: PriceRange) => void;
+
 export type selectBrandPropsType = {
-  selectedPriceRange: string;
-  setSelectedPriceRange: setHookFunction;
-  selectedMemorySize: string;
-  setSelectedMemorySize: setHookFunction;
-  changeSelectedBrand: setHookFunction;
-  changeShownComponent: setHookFunction;
+  selectedPriceRange: PriceRange;
+  changeSelectedPriceRange: setHookFunctionPriceRange;
+  selectedMemorySize: number;
+  changeSelectedMemorySize: setHookFunctionNumber;
+  selectedBrand: Brand,
+  changeSelectedBrand: setHookFunctionString;
+  changeShownComponent: setHookFunctionString;
 };
-interface ServiceInit {
-  status: "init";
+export type PriceRange = {
+  lowest: number;
+  highest: number;
+  text: string;
 }
-interface ServiceLoading {
-  status: "loading";
-}
+export type Brand = 'apple' | 'samsung'
 export interface ServiceSuccess {
   status: "success";
   payload: Phones;
@@ -30,7 +34,7 @@ export interface Phones {
   data: Phone[];
 }
 export type PhoneQuery = {
-  brand: 'apple' | 'samsung'
+  brand: Brand;
   lowest_price: number;
   highest_price: number;
   memory: number

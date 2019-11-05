@@ -8,17 +8,15 @@ export const phone = {
 };
 
 export const phoneBrands = [
-  { text: "Samsung", imgSrc: samsungSvg },
-  { text: "Iphone", imgSrc: appleSvg }
+  { text: "samsung", imgSrc: samsungSvg },
+  { text: "apple", imgSrc: appleSvg }
 ];
 
 export const pricesRange = [
-  { bottom: 200, top: 400, text: "200 - 400" },
-  { bottom: 400, top: 600, text: "400 - 600" },
-  { bottom: 600, top: 800, text: "600 - 800" },
-  { bottom: 800, top: 1000, text: "800 - 1000" }
+  { lowest: 200, highest: 400, text: "200 - 400" },
+  { lowest: 400, highest: 600, text: "400 - 600" },
+  { lowest: 600, highest: 800, text: "600 - 800" },
+  { lowest: 800, highest: 1000, text: "800 - 1000" }
 ];
 
-export const prices = [200, 400, 600, 800, 1000];
-
-export const memorySizes = ["32gb", "64gb", "128gb", "256gb"];
+export const memorySizes = [32, 64, 128, 256];
