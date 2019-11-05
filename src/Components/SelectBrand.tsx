@@ -19,7 +19,7 @@ export default ({
 
   let handleClick = (device: string) => {
     console.log(loading, "loading");
-    setLoading(true);
+    // setLoading(true);
     changeSelectedBrand(device);
   };
 

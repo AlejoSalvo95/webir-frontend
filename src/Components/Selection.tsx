@@ -1,19 +1,25 @@
 import React, { useState } from "react";
 import SelectBrand from "./SelectBrand";
 import PhoneService from "Services/PhoneService";
-import { selectBrandPropsType } from "Utils/Types";
-import useStarshipsService from "Services/PhoneService";
+import { selectBrandPropsType, PhoneQuery, ServiceSuccess, ServiceError } from "Utils/Types";
+import getPhonesService from "Services/PhoneService";
 
 import "./SelectionStyles.css";
 import Loader from "Loader";
-
+let defaultSearch: PhoneQuery = {
+  brand: 'apple',
+  lowest_price: 200,
+  highest_price: 300,
+  memory: 32
+}
 export default () => {
   // Declara una nueva variable de estado, la cual llamaremos “count”
+  const [showLoader, setShowLoader] = useState(false);
   const [shownComponent, setShownComponent] = useState("SelectDevice");
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
   const [selectedMemorySize, setSelectedMemorySize] = useState("");
-  const service = useStarshipsService();
+  let phoneResponse: ServiceSuccess | ServiceError | undefined
 
   // TODO
   // QUE AL APRETAR UN BOTON QUEDE AZUL O ALGO ASI
@@ -25,7 +31,11 @@ export default () => {
   let changeShownComponent = (component: string) => {
     setShownComponent(component);
   };
-  let handleFetchPhones = () => {
+  let handleFetchPhones = async () => {
+    setShowLoader(true)
+    phoneResponse = await getPhonesService(defaultSearch);
+    setShowLoader(false)
+
     console.log("clicked this handle phones");
   };
   let selectBrandProps: selectBrandPropsType = {
@@ -40,12 +50,12 @@ export default () => {
     <div>
       {<SelectBrand {...selectBrandProps} />}
       {<p onClick={handleFetchPhones}>Cickea aca para mandarlo</p>}
-      {service.status === "loading" && Loader()}
-      {service.status === "loaded" && service.payload.data && 
-        service.payload.data.map((starship,idx) => (
+      {showLoader && Loader()}
+      {phoneResponse && phoneResponse.status === "success" && phoneResponse.payload.data &&
+        phoneResponse.payload.data.map((starship, idx) => (
           <div key={idx}>{starship.price}</div>
         ))}
-      {service.status === "error" && (
+      {phoneResponse && phoneResponse.status === "error" && (
         <div>Error, the backend moved to the dark side.</div>
       )}
     </div>

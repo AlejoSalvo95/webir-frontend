@@ -13,22 +13,26 @@ interface ServiceInit {
 interface ServiceLoading {
   status: "loading";
 }
-interface ServiceLoaded<T> {
-  status: "loaded";
-  payload: T;
+export interface ServiceSuccess {
+  status: "success";
+  payload: Phones;
 }
-interface ServiceError {
+export interface ServiceError {
   status: "error";
   error: Error;
 }
-export type Service<T> =
-  | ServiceInit
-  | ServiceLoading
-  | ServiceLoaded<T>
-  | ServiceError;
-
 export type Phone = {
   imageUrl: string;
   name: string;
   price: string;
 };
+export interface Phones {
+  data: Phone[];
+}
+export type PhoneQuery = {
+  brand: 'apple' | 'samsung'
+  lowest_price: number;
+  highest_price: number;
+  memory: number
+};
+export type ServiceFunction = (params: PhoneQuery) => Promise<(ServiceSuccess | ServiceError)>

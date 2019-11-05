@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Service, Phone } from "Utils/Types";
+import { PhoneQuery, ServiceFunction } from "Utils/Types";
 
 // Tutorial: https://dev.to/camilomejia/fetch-data-with-react-hooks-and-typescript-390c
 
@@ -12,49 +12,44 @@ import { Service, Phone } from "Utils/Types";
         memory: 64
     }
 */
-export interface Phones {
-  data: Phone[];
-}
 
-const useGetPhonesService = () => {
-  const [result, setResult] = useState<Service<Phones>>({
-    status: "loading"
-  });
+let header = new Headers({
+  "Access-Control-Allow-Origin": "*",
+  "Content-Type": "multipart/form-data"
+});
+type sendDataType = {
+  method: string;
+  mode: "cors" | "navigate" | "same-origin" | "no-cors";
+  header: Headers;
+  dataType: string;
+  body?: string;
+};
+let sentData: sendDataType = {
+  method: "GET",
+  mode: "cors",
+  header: header,
+  dataType: "jsonp"
+};
 
-  let header = new Headers({
-    "Access-Control-Allow-Origin": "*",
-    "Content-Type": "multipart/form-data"
-  });
-  type sendDataType = {
-    method: string;
-    mode: "cors" | "navigate" | "same-origin" | "no-cors";
-    header: Headers;
-    dataType: string;
-    body?: string;
-  };
-  let sentData: sendDataType = {
-    method: "GET",
-    mode: "cors",
-    header: header,
-    dataType: "jsonp"
-  };
-  useEffect(() => {
-    fetch("http://localhost:1337/phones", sentData)
+const getPhonesService: ServiceFunction = (params: PhoneQuery) => {
+  console.log(params, 'params en getPhonesService')
+  const url = "http://localhost:1337/phones?brand=" + params.brand + "&memory=" + params.memory + "&lowest_price=" + params.lowest_price + "&highest_price=" + params.highest_price
+  console.log('url', url)
+  return new Promise((resolve, reject) => {
+    fetch(url, sentData)
       .then(response => {
-        console.log(response, "esa es la respuesta");
+        console.log(response, "esa es la respuesta no jsoneada");
         return response.json();
       })
       .then(response => {
-        console.log(response, "esa es la respuesta");
-        return setResult({ status: "loaded", payload: response });
+        console.log(response, "esa es la respuesta posta");
+        resolve({ status: "success", payload: response });
       })
       .catch(error => {
         console.log(error, "ese es la error");
-        return setResult({ status: "error", error });
+        reject({ status: "error", error });
       });
-  }, []);
-
-  return result;
+  })
 };
 
-export default useGetPhonesService;
+export default getPhonesService;
