@@ -37,18 +37,21 @@
 .big_padding_top {
   padding: 10% 0 0 0;
 }
-.get-prices{
+.get-prices {
   padding: 10px 15px;
   font-size: 20px;
   border: none;
   border-radius: 5px;
   margin: 5px;
 }
+.get-prices.disabled {
+  cursor: not-allowed;
+  background: grey;
+  color: rgb(85, 81, 81);
+}
 .flexcontainer {
   display: flex; /* or inline-flex */
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-
-
 }

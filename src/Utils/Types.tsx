@@ -11,18 +11,15 @@ export type selectMemorySizePropsType = {
   changeSelectedMemorySize: setHookFunctionNumber;
 };
 export type selectBrandPropsType = {
-  selectedMemorySize: number;
-  changeSelectedMemorySize: setHookFunctionNumber;
-  selectedBrand: Brand,
+  selectedBrand: Brand;
   changeSelectedBrand: setHookFunctionString;
-  changeShownComponent: setHookFunctionString;
 };
 export type PriceRange = {
   lowest: number;
   highest: number;
   text: string;
-}
-export type Brand = 'apple' | 'samsung'
+};
+export type Brand = "apple" | "samsung";
 export interface ServiceSuccess {
   status: "success";
   payload: Phones;
@@ -43,6 +40,9 @@ export type PhoneQuery = {
   brand: Brand;
   lowest_price: number;
   highest_price: number;
-  memory: number
+  memory: number;
 };
-export type ServiceFunction = (params: PhoneQuery) => Promise<(ServiceSuccess | ServiceError)>
+export type ServiceFunction = (
+  params: PhoneQuery
+) => Promise<ServiceSuccess | ServiceError>;
+export type phoneResponseType = ServiceSuccess | ServiceError | undefined;

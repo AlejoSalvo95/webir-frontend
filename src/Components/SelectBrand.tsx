@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { phone, phoneBrands } from "Utils/constants";
+import React from "react";
+import { phoneBrands } from "Utils/constants";
 
 import { selectBrandPropsType } from "Utils/Types";
 
 export default ({
   selectedBrand,
-  changeSelectedBrand,
-  changeShownComponent
+  changeSelectedBrand
 }: selectBrandPropsType) => {
   let brands = phoneBrands;
 

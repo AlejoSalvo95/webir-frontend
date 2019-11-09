@@ -1,6 +1,6 @@
 import React from "react";
 import { memorySizes } from "Utils/constants";
-import { setHookFunctionNumber, selectMemorySizePropsType } from "Utils/Types";
+import { selectMemorySizePropsType } from "Utils/Types";
 
 export default ({
   selectedMemorySize,
