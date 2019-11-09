@@ -1,11 +1,11 @@
 import React from "react";
 import { memorySizes } from "Utils/constants";
-import { setHookFunctionNumber } from "Utils/Types";
+import { setHookFunctionNumber, selectMemorySizePropsType } from "Utils/Types";
 
-export default (
-  selectedMemorySize: number,
-  changeSelectedMemorySize: setHookFunctionNumber
-) => {
+export default ({
+  selectedMemorySize,
+  changeSelectedMemorySize
+}: selectMemorySizePropsType) => {
   let handleClick = (memorySize: number) => {
     changeSelectedMemorySize(memorySize);
   };
@@ -17,7 +17,10 @@ export default (
         <button
           onClick={() => handleClick(memorySize)}
           key={idx}
-          className={"select-price-button margin_0_10" + (memorySize === selectedMemorySize ? " selected" : "")}
+          className={
+            "select-price-button margin_0_10" +
+            (memorySize === selectedMemorySize ? " selected" : "")
+          }
         >
           {memorySize}
         </button>

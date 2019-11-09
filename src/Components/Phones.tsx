@@ -2,31 +2,74 @@ import React, { useState } from "react";
 import Loader from "Loader";
 
 export default () => {
-  const [loading, setLoading] = useState(false);
-
-  let handleClick = (device: string) => {
-    console.log(loading, "loading");
-    setLoading(true);
-  };
   let phones = [
-    { name: "iPhone XS", price: "1000usd" },
-    { name: "iPhone XS Pro", price: "1500usd" },
-    { name: "iPhone XS Mini", price: "500usd" }
+    {
+      name: "iPhone XS",
+      price: "1000usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Pro",
+      price: "1500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Mini",
+      price: "500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Mini2",
+      price: "500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Mini3",
+      price: "500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Mini4",
+      price: "500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Mini4",
+      price: "500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    {
+      name: "iPhone XS Mini4",
+      price: "500usd",
+      imgSrc:
+        "https://css-tricks.com/wp-content/uploads/2018/10/justify-content.svg"
+    },
+    { name: "iPhone XS Mini4", price: "500usd" },
+    { name: "iPhone XS Mini5", price: "500usd" },
+    { name: "iPhone XS Mini6", price: "500usd" }
   ];
   return (
     <div>
-      {loading && Loader()}
       <div className="big_padding_top">
         <p className="select-text">PHONES</p>
-        {phones.map((phone, ixd) => (
-          <button
-            key={ixd}
-            className="select-button"
-            onClick={() => handleClick(phone.price)}
-          >
-            <p>{phone.name}</p>
-          </button>
-        ))}
+        <div className="flexcontainer">
+          {phones.map((phone, ixd) => (
+            <a href={phone.imgSrc} key={ixd} target="_blank">
+              <div className="select-button">
+                <img src={phone.imgSrc} />
+
+                <p>{phone.name}</p>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

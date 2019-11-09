@@ -2,9 +2,15 @@ export type setHookFunctionString = (value: string) => void;
 export type setHookFunctionNumber = (value: number) => void;
 export type setHookFunctionPriceRange = (value: PriceRange) => void;
 
-export type selectBrandPropsType = {
+export type selectPriceRangePropsType = {
   selectedPriceRange: PriceRange;
   changeSelectedPriceRange: setHookFunctionPriceRange;
+};
+export type selectMemorySizePropsType = {
+  selectedMemorySize: number;
+  changeSelectedMemorySize: setHookFunctionNumber;
+};
+export type selectBrandPropsType = {
   selectedMemorySize: number;
   changeSelectedMemorySize: setHookFunctionNumber;
   selectedBrand: Brand,
