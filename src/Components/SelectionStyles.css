@@ -55,3 +55,6 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
+.arrow-back{
+  max-width: 40px;
+}

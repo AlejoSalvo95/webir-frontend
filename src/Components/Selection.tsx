@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SelectBrand from "Components/SelectBrand";
 import SelectPriceRange from "Components/SelectPriceRange";
 import SelectMemorySize from "Components/SelectMemorySize";
+import arrowSvg from "Utils/Assets/Images/white-arrow.svg";
 
 import Phones from "./Phones";
 import {
@@ -58,6 +59,7 @@ export default () => {
   };
   return (
     <div>
+        <img className="arrow-back" src={arrowSvg} />
       {showLoader && Loader()}
       {!phoneResponse ? (
         <div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Loader from "Loader";
+import arrowSvg from "Utils/Assets/Images/white-arrow.svg";
 
 export default () => {
   let phones = [
@@ -57,6 +58,7 @@ export default () => {
   ];
   return (
     <div>
+      <img src={arrowSvg} />
       <div className="big_padding_top">
         <p className="select-text">PHONES</p>
         <div className="flexcontainer">
