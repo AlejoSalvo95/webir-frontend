@@ -15,21 +15,18 @@ export default ({
 
   return (
     <div>
-      <div className="big_padding_top">
-        <p className="select-text">SELECT BRAND</p>
-        {brands.map((brand, ixd) => (
-          <button
-            key={ixd}
-            className={
-              "select-button" +
-              (selectedBrand === brand.text ? " selected" : "")
-            }
-            onClick={() => handleClick(brand.text)}
-          >
-            <img alt={brand.text} src={brand.imgSrc} />
-          </button>
-        ))}
-      </div>
+      <p className="select-text">SELECT BRAND</p>
+      {brands.map((brand, ixd) => (
+        <button
+          key={ixd}
+          className={
+            "select-button" + (selectedBrand === brand.text ? " selected" : "")
+          }
+          onClick={() => handleClick(brand.text)}
+        >
+          <img alt={brand.text} src={brand.imgSrc} />
+        </button>
+      ))}
     </div>
   );
 };

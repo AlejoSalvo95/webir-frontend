@@ -1,7 +1,10 @@
 export type setHookFunctionString = (value: string) => void;
 export type setHookFunctionNumber = (value: number) => void;
 export type setHookFunctionPriceRange = (value: PriceRange) => void;
-
+export type noParamsFunction = () => void;
+export type phonePropsType = {
+  resetSetPhoneResponse: noParamsFunction;
+};
 export type selectPriceRangePropsType = {
   selectedPriceRange: PriceRange;
   changeSelectedPriceRange: setHookFunctionPriceRange;
@@ -29,9 +32,15 @@ export interface ServiceError {
   error: Error;
 }
 export type Phone = {
-  imageUrl: string;
-  name: string;
+  _index: string;
+  _type: string;
+  description: string;
+  link: string;
+  image: string;
   price: string;
+  memory?: string;
+  model: string;
+  page: string;
 };
 export interface Phones {
   data: Phone[];

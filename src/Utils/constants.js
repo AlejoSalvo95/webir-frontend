@@ -20,3 +20,8 @@ export const pricesRange = [
 ];
 
 export const memorySizes = [32, 64, 128, 256];
+
+export const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}

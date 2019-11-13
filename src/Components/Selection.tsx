@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import SelectBrand from "Components/SelectBrand";
 import SelectPriceRange from "Components/SelectPriceRange";
 import SelectMemorySize from "Components/SelectMemorySize";
-import arrowSvg from "Utils/Assets/Images/white-arrow.svg";
 
 import Phones from "./Phones";
 import {
   selectBrandPropsType,
   PhoneQuery,
   PriceRange,
-  phoneResponseType
+  phoneResponseType,
+  phonePropsType
 } from "Utils/Types";
 import getPhonesService from "Services/PhoneService";
 
@@ -31,6 +31,10 @@ export default () => {
 
   let changeSelectedMemorySize = (memory: number) => {
     setSelectedMemorySize(memory);
+  };
+  let resetSetPhoneResponse = () => {
+    console.log("se llama aca");
+    setPhoneResponse(phoneDefaultResponse);
   };
   let changeSelectedPriceRange = (princeRange: PriceRange) => {
     setSelectedPriceRange(princeRange);
@@ -57,9 +61,11 @@ export default () => {
     selectedBrand,
     changeSelectedBrand
   };
+  let phoneProps: phonePropsType = {
+    resetSetPhoneResponse
+  };
   return (
     <div>
-        <img className="arrow-back" src={arrowSvg} />
       {showLoader && Loader()}
       {!phoneResponse ? (
         <div>
@@ -72,7 +78,7 @@ export default () => {
             selectedMemorySize={selectedMemorySize}
             changeSelectedMemorySize={changeSelectedMemorySize}
           />
-          <div className="margin_10_0_0_0">
+          <div className="margin_40_0_0_0">
             <button
               onClick={handleFetchPhones}
               className={
@@ -88,19 +94,14 @@ export default () => {
         </div>
       ) : (
         <div>
-          <Phones />
-
           {phoneResponse &&
             phoneResponse.status === "success" &&
-            phoneResponse.payload.data &&
-            phoneResponse.payload.data.map((starship, idx) => (
-              <div key={idx}>{starship.price}</div>
-            ))}
+            phoneResponse.payload.data && <Phones {...phoneProps} />}
         </div>
       )}
 
       {phoneResponse && phoneResponse.status === "error" && (
-        <div>Error, the backend moved to the dark side.</div>
+        <div>There was an internal error, our sincere apologies.</div>
       )}
     </div>
   );

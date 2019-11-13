@@ -32,6 +32,13 @@ input:focus {
 *:focus {
   outline: none;
 }
+.margin_40_0_0_0 {
+  margin: 40px 0 0 0;
+}
+
+.margin_20_0_0_0 {
+  margin: 20px 0 0 0;
+}
 
 .margin_10_0_0_0 {
   margin: 10px 0 0 0;

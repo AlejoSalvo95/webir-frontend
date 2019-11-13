@@ -1,11 +1,9 @@
 .selection {
   text-align: center;
 }
-
 .select-text {
   font-size: 40px;
 }
-
 .select-button {
   border: 0;
   border-radius: 23px;
@@ -39,7 +37,7 @@
 }
 .get-prices {
   padding: 10px 15px;
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   border-radius: 5px;
   margin: 5px;
@@ -55,6 +53,20 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-.arrow-back{
+.arrow-back {
   max-width: 40px;
+  margin: -5px 20px;
+}
+.shown-phone {
+  max-width: 300px;
+  margin: 5px 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+}
+.shown-phone p {
+  color: black;
+}
+.shown-phone img {
+  max-width: 250px;
 }
