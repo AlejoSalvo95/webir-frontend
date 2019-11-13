@@ -682,11 +682,16 @@ export default ({ resetSetPhoneResponse }: phonePropsType) => {
           {actualPhones.map((phone, ixd) => (
             <div className="shown-phone">
               <img src={phone.image} />
-              <p>{capitalize(phone.model)}</p>
-              <p>{phone.price}</p>
-              <a href={phone.link} key={ixd} target="_blank">
-                Open {phone.page}
-              </a>
+              <p>
+                {capitalize(phone.model) +
+                  (phone.memory ? " " + phone.memory + "gb" : "")}
+              </p>
+              <p className="phone-price">USD {phone.price}</p>
+              <div className="phone-link">
+                <a href={phone.link} key={ixd} target="_blank">
+                  Open {phone.page}
+                </a>
+              </div>
             </div>
           ))}
         </div>

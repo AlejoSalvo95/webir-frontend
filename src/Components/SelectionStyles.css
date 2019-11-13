@@ -50,15 +50,15 @@
 .flexcontainer {
   display: flex; /* or inline-flex */
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .arrow-back {
   max-width: 40px;
-  margin: -5px 20px;
+  margin: -5px 20px -5px 0;
 }
 .shown-phone {
-  max-width: 300px;
+  width: 300px;
   margin: 5px 10px;
   padding: 10px;
   background: white;
@@ -66,6 +66,16 @@
 }
 .shown-phone p {
   color: black;
+  margin: 5px;
+  margin: 5px 0;
+}
+.shown-phone .phone-price {
+  font-size: 30px;
+  margin: 10px 0;
+  color: #57915b;
+}
+.shown-phone .phone-link {
+  margin: 10px 0;
 }
 .shown-phone img {
   max-width: 250px;
