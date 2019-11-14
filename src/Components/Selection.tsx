@@ -62,7 +62,11 @@ export default () => {
     changeSelectedBrand
   };
   let phoneProps: phonePropsType = {
-    resetSetPhoneResponse
+    resetSetPhoneResponse,
+    phonesData:
+      phoneResponse && phoneResponse.status === "success"
+        ? phoneResponse.payload.data
+        : []
   };
   return (
     <div>

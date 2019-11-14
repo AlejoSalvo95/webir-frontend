@@ -4,6 +4,7 @@ export type setHookFunctionPriceRange = (value: PriceRange) => void;
 export type noParamsFunction = () => void;
 export type phonePropsType = {
   resetSetPhoneResponse: noParamsFunction;
+  phonesData: Phone[];
 };
 export type selectPriceRangePropsType = {
   selectedPriceRange: PriceRange;

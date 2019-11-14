@@ -3,7 +3,7 @@ import Loader from "Loader";
 import arrowSvg from "Utils/Assets/Images/white-arrow.svg";
 import { Phone, phonePropsType } from "Utils/Types";
 import { capitalize } from "Utils/constants";
-export default ({ resetSetPhoneResponse }: phonePropsType) => {
+export default ({ resetSetPhoneResponse, phonesData }: phonePropsType) => {
   let actualPhones: Phone[] = [
     {
       _index: "celulares",
@@ -679,7 +679,7 @@ export default ({ resetSetPhoneResponse }: phonePropsType) => {
         />
         <span className="select-text">PHONES</span>
         <div className="margin_20_0_0_0 flexcontainer">
-          {actualPhones.map((phone, ixd) => (
+          {phonesData.map((phone, ixd) => (
             <div className="shown-phone">
               <img src={phone.image} />
               <p>
