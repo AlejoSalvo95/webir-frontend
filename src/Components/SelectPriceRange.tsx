@@ -1,5 +1,6 @@
 import React from "react";
 import { pricesRange } from "Utils/constants";
+import { pricesRangeText } from "Utils/GeneralFunctions";
 import { PriceRange, selectPriceRangePropsType } from "Utils/Types";
 
 export default ({
@@ -21,13 +22,13 @@ export default ({
             className={
               "select-price-button margin_0_10" +
               (selectedPriceRange &&
-              priceRange &&
-              selectedPriceRange.text === priceRange.text
+                priceRange &&
+                pricesRangeText(selectedPriceRange.lowest, selectedPriceRange.highest) === pricesRangeText(priceRange.lowest, priceRange.highest)
                 ? " selected"
                 : "")
             }
           >
-            {priceRange.text}
+            {pricesRangeText(priceRange.lowest, priceRange.highest)}
           </button>
         );
       })}

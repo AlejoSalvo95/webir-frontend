@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import SelectBrand from "Components/SelectBrand";
 import SelectPriceRange from "Components/SelectPriceRange";
 import SelectMemorySize from "Components/SelectMemorySize";
-
 import Phones from "./Phones";
 import {
   selectBrandPropsType,
@@ -12,15 +11,9 @@ import {
   phonePropsType
 } from "Utils/Types";
 import getPhonesService from "Services/PhoneService";
-
 import "./SelectionStyles.css";
 import Loader from "Loader";
-let defaultSearch: PhoneQuery = {
-  brand: "apple",
-  lowest_price: 200,
-  highest_price: 300,
-  memory: 32
-};
+
 let phoneDefaultResponse: phoneResponseType = undefined;
 export default () => {
   const [showLoader, setShowLoader] = useState(false);
@@ -33,7 +26,6 @@ export default () => {
     setSelectedMemorySize(memory);
   };
   let resetSetPhoneResponse = () => {
-    console.log("se llama aca");
     setPhoneResponse(phoneDefaultResponse);
   };
   let changeSelectedPriceRange = (princeRange: PriceRange) => {
@@ -43,7 +35,6 @@ export default () => {
     setSelectedBrand(brand);
   };
   let handleFetchPhones = async () => {
-    console.log(selectedBrand, selectedPriceRange, selectedMemorySize);
     if (selectedBrand && selectedPriceRange && selectedMemorySize) {
       setShowLoader(true);
       let query: PhoneQuery = {
@@ -54,7 +45,6 @@ export default () => {
       };
       setPhoneResponse(await getPhonesService(query));
       setShowLoader(false);
-      console.log("clicked this handle phones");
     }
   };
   let selectBrandProps: selectBrandPropsType = {
@@ -70,6 +60,7 @@ export default () => {
   };
   return (
     <div>
+      <Phones {...phoneProps} />
       {showLoader && Loader()}
       {!phoneResponse ? (
         <div>
@@ -97,12 +88,12 @@ export default () => {
           </div>
         </div>
       ) : (
-        <div>
-          {phoneResponse &&
-            phoneResponse.status === "success" &&
-            phoneResponse.payload.data && <Phones {...phoneProps} />}
-        </div>
-      )}
+          <div>
+            {phoneResponse &&
+              phoneResponse.status === "success" &&
+              phoneResponse.payload.data && <Phones {...phoneProps} />}
+          </div>
+        )}
 
       {phoneResponse && phoneResponse.status === "error" && (
         <div>There was an internal error, our sincere apologies.</div>

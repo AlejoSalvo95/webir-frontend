@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 import { PhoneQuery, ServiceFunction } from "Utils/Types";
 
 // Tutorial: https://dev.to/camilomejia/fetch-data-with-react-hooks-and-typescript-390c
@@ -32,21 +30,16 @@ let sentData: sendDataType = {
 };
 
 const getPhonesService: ServiceFunction = (params: PhoneQuery) => {
-  console.log(params, 'params en getPhonesService')
   const url = "http://localhost:1337/phones?brand=" + params.brand + "&memory=" + params.memory + "&lowest_price=" + params.lowest_price + "&highest_price=" + params.highest_price
-  console.log('url', url)
   return new Promise((resolve, reject) => {
     fetch(url, sentData)
       .then(response => {
-        console.log(response, "esa es la respuesta no jsoneada");
         return response.json();
       })
       .then(response => {
-        console.log(response, "esa es la respuesta posta");
         resolve({ status: "success", payload: response });
       })
       .catch(error => {
-        console.log(error, "ese es la error");
         reject({ status: "error", error });
       });
   })
