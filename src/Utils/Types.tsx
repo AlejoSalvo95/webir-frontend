@@ -69,4 +69,5 @@ export type Brand = "apple" | "samsung";
 export type PriceRange = {
   lowest: number;
   highest: number;
+  text?: string;
 };

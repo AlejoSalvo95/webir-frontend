@@ -28,7 +28,7 @@ export default ({
                 : "")
             }
           >
-            {pricesRangeText(priceRange.lowest, priceRange.highest)}
+            {priceRange.text ? priceRange.text : pricesRangeText(priceRange.lowest, priceRange.highest)}
           </button>
         );
       })}

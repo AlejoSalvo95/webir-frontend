@@ -13,11 +13,11 @@ export const phoneBrands = [
 ];
 
 export const pricesRange = [
-  { lowest: 200, highest: 500 },
-  { lowest: 500, highest: 800 },
-  { lowest: 800, highest: 1100 },
-  { lowest: 1100, highest: 1500 },
-  { lowest: 1500, highest: 9000 }
+  { lowest: 0, highest: 9000, text: 'No range' },
+  { lowest: 200, highest: 600 },
+  { lowest: 600, highest: 1000 },
+  { lowest: 1000, highest: 1400 },
+  { lowest: 1400, highest: 3000, text: '1400 - *' },
 ];
 export const memorySizes = [32, 64, 128, 256];
 

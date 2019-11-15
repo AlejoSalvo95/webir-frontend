@@ -32,8 +32,8 @@
 .select-price-button.selected {
   background-color: #aeffb4;
 }
-.big_padding_top {
-  padding: 10% 0 0 0;
+.small_padding_top{
+  padding: 5% 0 0 0;
 }
 .get-prices {
   padding: 10px 15px;
@@ -71,11 +71,17 @@
 }
 .shown-phone .phone-price {
   font-size: 30px;
-  margin: 10px 0;
+  margin: 10px 0 0 0;
   color: #57915b;
 }
 .shown-phone .phone-link {
+  margin: 0 0 10px 0;
+  font-size: 19px;
+}
+.shown-phone .phone-secondary-link {
   margin: 10px 0;
+  color: #9a1b1b;
+  font-size: 14px;
 }
 .shown-phone img {
   max-width: 250px;

@@ -60,7 +60,6 @@ export default () => {
   };
   return (
     <div>
-      <Phones {...phoneProps} />
       {showLoader && Loader()}
       {!phoneResponse ? (
         <div>
