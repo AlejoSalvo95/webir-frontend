@@ -49,6 +49,7 @@ export default ({ resetSetPhoneResponse, phonesData }: phonePropsType) => {
       </div>)
     }
   })
+  let noPhones: ReactNode = <div className="margin_10_0_0_0">No phones found for this specification</div>
   return (
     <div>
       <div className="small_padding_top">
@@ -60,7 +61,7 @@ export default ({ resetSetPhoneResponse, phonesData }: phonePropsType) => {
         <span className="select-text">PHONES</span>
         <div className="margin_20_0_0_0 flexcontainer">
           {
-            showingPhonesDiv
+            showingPhonesDiv.length ? showingPhonesDiv : noPhones
           }
         </div>
       </div>
